@@ -7,8 +7,6 @@ var state = "up"
 
 func _process(delta):
 	control()
-	
-
 
 
 func control():
@@ -28,7 +26,6 @@ func up():
 	$"Sprite".rotation_degrees = 0
 	$"Sprite".flip_v = false
 
-
 func down():
 	self.transform.origin.y += cell_distance
 	$"Sprite".rotation_degrees = 0
@@ -38,7 +35,6 @@ func left():
 	self.transform.origin.x -= cell_distance
 	$"Sprite".rotation_degrees = -90
 	$"Sprite".flip_v = false
-
 
 func right():
 	self.transform.origin.x += cell_distance
@@ -56,9 +52,6 @@ func _on_Timer_timeout():
 		left()
 	elif state == "right":
 		right()
-#TODO: make snake go quicker as it gets bigger
-	
-
 
 func _on_death_group_area_entered(area):
 	if area.is_in_group("death"):

@@ -8,10 +8,11 @@ func _process(delta):
 		queue_free()
 		quicc()
 		if coins_num < max_coins:
-			spawn()
+			spawn_coin()
 
 
-func spawn():
+
+func spawn_coin():
 	var a = $"/root/GameEvents".spawn_coin()
 	$"/root/Game/Coins".add_child(a)
 	coins_num += 1
