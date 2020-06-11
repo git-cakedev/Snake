@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://gfx/spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Snake/Snake.gd" type="Script" id=2]
+[ext_resource path="res://Snake/Timer.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 4 )
+
+[node name="Snake" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 8, 8 )
+
+[node name="Head" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="." groups=[
+"snake",
+]]
+wait_time = 0.2
+autostart = true
+script = ExtResource( 3 )
+
+[node name="Tail" type="Position2D" parent="."]
+position = Vector2( 0, 4 )
+[connection signal="area_entered" from="." to="." method="_on_death_group_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
