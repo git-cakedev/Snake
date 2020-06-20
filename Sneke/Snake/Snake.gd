@@ -42,7 +42,6 @@ func right():
 	$"Sprite".flip_v = false
 
 
-
 func _on_Timer_timeout():
 	if state == "up":
 		up()
